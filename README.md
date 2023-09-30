@@ -12,5 +12,5 @@ The code appears to be part of a system that monitors or manages data related to
 
 Skills and Technologies Used
 SQL: Procedures, Triggers, CRUD operations.
-DBMS: Potentially Oracle, given the use of DBMS_OUTPUT.
+DBMS: Oracle, given the use of DBMS_OUTPUT.
 Transaction Control: Using COMMIT and ROLLBACK.
