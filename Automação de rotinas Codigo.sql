@@ -35,7 +35,7 @@ BEGIN
     INSERT INTO t_ecmap VALUES(5, 'Costa Verde', '21-05-2022','Groot');
     INSERT INTO t_ecmap VALUES(2, 'Porto Rico', '10-05-2022','Marvel');
     INSERT INTO t_ecmap VALUES(3, 'Santa Catarina', '19-05-2022','DC');
-    INSERT INTO t_ecmap VALUES(4, 'São Paulo', '30-05-2022','WM');
+    INSERT INTO t_ecmap VALUES(4, 'SÃ£o Paulo', '30-05-2022','WM');
     COMMIT;
 EXCEPTION
     WHEN OTHERS THEN ROLLBACK;
@@ -64,7 +64,7 @@ SELECT * FROM t_ecmap;
 SELECT * FROM t_ecloc;
 SELECT * FROM t_ectemp;
 
-Automação de rotinas 1 - Validação de níveis de temperado, baseado na regra de negocio do nosso projeto.
+AutomaÃ§Ã£o de rotinas 1 - ValidaÃ§Ã£o de nÃ­veis de temperado, baseado na regra de negocio do nosso projeto.
 
 SET SERVEROUTPUT ON
 
@@ -77,9 +77,9 @@ DECLARE
 BEGIN
     dif_temp := :NEW.valor_temp - :OLD.valor_temp;
     
-    DBMS_OUTPUT.PUT_LINE('Temperatura Anterior: ' || :OLD.valor_temp ||'°');
-    DBMS_OUTPUT.PUT_LINE('Temperatura Nova: ' || :NEW.valor_temp ||'°');
-    DBMS_OUTPUT.PUT_LINE('Diferença temperatura: ' || dif_temp ||'°');
+    DBMS_OUTPUT.PUT_LINE('Temperatura Anterior: ' || :OLD.valor_temp ||'Â°');
+    DBMS_OUTPUT.PUT_LINE('Temperatura Nova: ' || :NEW.valor_temp ||'Â°');
+    DBMS_OUTPUT.PUT_LINE('DiferenÃ§a temperatura: ' || dif_temp ||'Â°');
 END;
 
 --teste trigger
@@ -88,7 +88,7 @@ UPDATE T_ECTEMP SET valor_temp = 40
     WHERE id_tem = 4;
     ROLLBACK;
 
-Automação de rotinas 2 - Insert Automático de dados nas tabelas
+AutomaÃ§Ã£o de rotinas 2 - Insert AutomÃ¡tico de dados nas tabelas
 
 
 create or replace PROCEDURE insert_datas_t_ecloc
@@ -106,7 +106,7 @@ EXCEPTION
 END;
 
 
-Automação de rotinas 3 – Caso projeto aprovado, retorno de relatório geral.
+AutomaÃ§Ã£o de rotinas 3 â€“ Caso projeto aprovado, retorno de relatÃ³rio geral.
 
 Declare
       Cursor Cur_Cli Is
@@ -119,14 +119,14 @@ Begin
             Fetch Cur_Cli
             Into  Reg_Cli.nm_mapea, Reg_Cli.nm_fantasia;
             Exit When Cur_Cli%NotFound;
-            Dbms_Output.Put_Line('Aprovação:' || Reg_Cli.nm_fantasia);
+            Dbms_Output.Put_Line('AprovaÃ§Ã£o:' || Reg_Cli.nm_fantasia);
             Dbms_Output.Put_Line('Nome Mapeamento:' || Reg_Cli.nm_mapea);
       End Loop;
       Close Cur_Cli;
 End;
 
 
-Automação de rotinas 4 – Deleção automática baseado nas regras de negócios do nosso projeto.
+AutomaÃ§Ã£o de rotinas 4 â€“ DeleÃ§Ã£o automÃ¡tica baseado nas regras de negÃ³cios do nosso projeto.
 
 CREATE OR REPLACE PROCEDURE del_user_atv (id_user IN NUMBER) IS
 BEGIN
@@ -137,8 +137,3 @@ END del_user_atv;
  
 EXECUTE del_user_atv(2);
     ROLLBACK;
-
-
-RM 87188 – Diogo Reiznaudtt Poetsch
-RM 86797 – Natanael Martins Felix da Silva
-
